@@ -1,0 +1,24 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: Checklist
+file_extensions:
+  - chl
+scope: text.checklist
+contexts:
+  main:
+    - match: ^( *)-
+      push:
+        - meta_scope: keyword.control.checklist
+        - match: ^(?!\1 )(?!\n)
+          pop: true
+    - match: ^( *)\+
+      push:
+        - meta_scope: entity.other.attribute-name.checklist
+        - match: ^(?!\1 )(?!\n)
+          pop: true
+    - match: ^( *)✗
+      push:
+        - meta_scope: comment.line.checklist
+        - match: ^(?!\1 )(?!\n)
+          pop: true
