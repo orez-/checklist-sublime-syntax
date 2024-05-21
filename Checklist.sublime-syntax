@@ -8,17 +8,26 @@ scope: text.checklist
 contexts:
   main:
     - match: ^( *)-
-      push:
-        - meta_scope: keyword.control.checklist
-        - match: ^(?!\1 )(?!\n)
-          pop: true
+      push: todo
     - match: ^( *)\+
-      push:
-        - meta_scope: entity.other.attribute-name.checklist
-        - match: ^(?!\1 )(?!\n)
-          pop: true
+      push: done
     - match: ^( *)✗
-      push:
-        - meta_scope: comment.line.checklist
-        - match: ^(?!\1 )(?!\n)
-          pop: true
+      push: comment
+  todo:
+    - meta_scope: keyword.control.checklist
+    - match: ^( *)\+
+      push: done
+    - match: ^( *)✗
+      push: comment
+    - match: ^(?!\1 )(?!\n)
+      pop: true
+  done:
+    - meta_scope: entity.other.attribute-name.checklist
+    - match: ^( *)✗
+      push: comment
+    - match: ^(?!\1 )(?!\n)
+      pop: true
+  comment:
+    - meta_scope: comment.line.checklist
+    - match: ^(?!\1 )(?!\n)
+      pop: true

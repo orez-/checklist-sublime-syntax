@@ -1,0 +1,20 @@
+~ white
+  ~ white
+  - red
+  + green
+  ✗ gray
+- red
+  ~ red
+  - red
+  + green
+  ✗ gray
++ green
+  ~ green
+  - green
+  + green
+  ✗ gray
+✗ gray
+  ~ gray
+  - gray
+  + gray
+  ✗ gray
